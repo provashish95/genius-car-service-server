@@ -18,10 +18,13 @@
  * ---------------------------
  * Update server with new changes
  * ---------------------------
+ * 0.Make changes
  * 1.Make sure : git add .git commit -m . git push
  * 2.git push heroku main
  * ---------------------------
- * Connect server with client
+ * Connect server with client and deploy client
  * ---------------------------
- * 1.
+ * 1.Replace localhost by heroku link
+ * 2.npm run build
+ * 3.firebase deploy
  */
