@@ -96,6 +96,12 @@ async function run() {
             const order = req.body;
             const result = await orderCollection.insertOne(order);
             res.send(result);
+        });
+
+        //deploy to heroku testing purpose 
+
+        app.get('/heroku', (req, res) => {
+            res.send('make changes')
         })
 
 
