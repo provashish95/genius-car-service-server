@@ -4,6 +4,7 @@ const cors = require('cors');
 require('dotenv').config()
 const app = express();
 const port = process.env.PORT || 5000;
+const jwt = require('jsonwebtoken');
 
 //middleware
 app.use(cors());
@@ -18,6 +19,16 @@ async function run() {
         await client.connect();
         const serviceCollection = client.db("geniusCar").collection("service");
         const orderCollection = client.db("geniusCar").collection("order");
+
+
+        //Auth 
+        app.post('/login', async (req, res) => {
+            const user = req.body;
+            const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+                expiresIn: '1d'
+            });
+            res.send({ accessToken })
+        })
 
         //get all data from api 
         app.get('/service', async (req, res) => {
